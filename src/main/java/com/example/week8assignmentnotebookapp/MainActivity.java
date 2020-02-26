@@ -76,8 +76,11 @@ public class MainActivity extends AppCompatActivity {
 
         NoteStorage.createList(noteName.getText().toString());
 
+
         addBtn.clearFocus();
         noteName.clearFocus();
+
+        noteName.setText("");
 
         addBtn.setVisibility(View.INVISIBLE);
         noteName.setVisibility(View.INVISIBLE);

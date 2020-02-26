@@ -32,11 +32,21 @@ public class DetailActivity extends AppCompatActivity {
         if (bundle != null) {
             System.out.println("Row number : " + intent.getIntExtra("RowNumber", 0));
 
+            RowNr = intent.getIntExtra("RowNumber", 0);
+
 
             textView = (TextView)findViewById(R.id.noteTextView);
-            textView.setText(NoteStorage.getList().get(intent.getIntExtra("RowNumber", 0)).getHeadLine());
+            textView.setText(NoteStorage.getList().get(RowNr).getHeadLine());
 
+            editText = (EditText)findViewById(R.id.noteTextBox);
+            editText.setText(NoteStorage.getList().get(RowNr).getBody());
 
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        NoteStorage.getList().get(RowNr).setBody(editText.getText().toString());
     }
 }
