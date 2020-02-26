@@ -13,30 +13,36 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     ListView listView;
-    Button plusBtn;
     Button addBtn;
     EditText noteName;
     Intent intent;
+    ArrayList dummyList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         listView = findViewById(R.id.ListView);
 
-        List list = NoteStorage.getList();
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+        ArrayAdapter<Notes> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, NoteStorage.getList());
 
         listView.setAdapter(arrayAdapter);
 
+        makeListviewItemlistener();
+    }
+
+
+    public void makeListviewItemlistener(){
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -48,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
     public void addToList(View view){

@@ -1,12 +1,20 @@
 package com.example.week8assignmentnotebookapp;
 
+import androidx.annotation.NonNull;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class NoteStorage {
 
-    private static List<Notes> list;
 
-    public static List<Notes> getList() {
+    private static ArrayList<Notes> list = new ArrayList<>();
+
+    public NoteStorage(ArrayList li) {
+        list = li;
+    }
+
+    public static ArrayList<Notes> getList() {
         return list;
     }
 

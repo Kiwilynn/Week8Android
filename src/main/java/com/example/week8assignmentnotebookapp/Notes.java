@@ -27,4 +27,8 @@ public class Notes {
     public void setBody(String body) {
         this.body = body;
     }
+    @Override
+    public String toString(){
+        return headLine;
+    }
 }
